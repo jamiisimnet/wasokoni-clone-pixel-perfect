@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, Share2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/hooks/use-toast";
 
 const bundles = [
   {
@@ -43,6 +45,22 @@ const bundles = [
 ];
 
 export const PopularBundles = () => {
+  const navigate = useNavigate();
+
+  const handleBuyNow = (bundle: typeof bundles[0]) => {
+    navigate("/payment", { state: { bundle } });
+  };
+
+  const handleShare = (bundle: typeof bundles[0]) => {
+    const message = `🔥 Check out this amazing data bundle!\n\n📦 ${bundle.data} for only KSh ${bundle.price}\n✅ ${bundle.features.join("\n✅ ")}\n\nGet yours now at MS MarketPlace!`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+    toast({
+      title: "Opening WhatsApp",
+      description: "Share this bundle with your friends!",
+    });
+  };
+
   return (
     <section id="bundles" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -82,17 +100,33 @@ export const PopularBundles = () => {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="flex-col gap-2">
                 <Button
                   className="w-full"
                   variant={bundle.popular ? "default" : "outline"}
                   size="lg"
+                  onClick={() => handleBuyNow(bundle)}
                 >
                   Buy Now
+                </Button>
+                <Button
+                  className="w-full"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleShare(bundle)}
+                >
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share on WhatsApp
                 </Button>
               </CardFooter>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button size="lg" onClick={() => navigate("/bundles")}>
+            View All Bundles
+          </Button>
         </div>
       </div>
     </section>

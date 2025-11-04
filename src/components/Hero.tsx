@@ -1,7 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleBuyOffer = (offer: { price: string; data: string; validity: string }) => {
+    const bundle = {
+      data: offer.data,
+      price: parseInt(offer.price),
+      features: [`Validity: ${offer.validity}`, "High Speed Data", "Instant Activation"],
+      popular: false,
+    };
+    navigate("/payment", { state: { bundle } });
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-4 py-16 md:py-24">
@@ -22,7 +35,7 @@ export const Hero = () => {
               Perfect for personal use, business, and everything in between.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-base">
+              <Button size="lg" className="text-base" onClick={() => navigate("/bundles")}>
                 Shop Bundles
               </Button>
               <Button size="lg" variant="outline" className="text-base">
@@ -51,7 +64,7 @@ export const Hero = () => {
                     </div>
                     <div className="text-2xl font-bold text-foreground mb-1">{offer.data}</div>
                     <div className="text-sm text-muted-foreground mb-3">{offer.validity}</div>
-                    <Button size="sm" className="w-full">
+                    <Button size="sm" className="w-full" onClick={() => handleBuyOffer(offer)}>
                       Buy
                     </Button>
                   </div>

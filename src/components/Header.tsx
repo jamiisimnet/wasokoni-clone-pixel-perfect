@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
@@ -28,18 +30,18 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#bundles" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <button onClick={() => navigate("/bundles")} className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Data Bundles
-            </a>
-            <a href="#services" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => navigate("/services")} className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Services
-            </a>
-            <a href="#about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => navigate("/about")} className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               About
-            </a>
-            <a href="#contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => navigate("/contact")} className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* Desktop Actions */}
@@ -57,7 +59,7 @@ export const Header = () => {
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
             </Button>
-            <Button>Get Started</Button>
+            <Button onClick={() => navigate("/auth")}>Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,25 +81,25 @@ export const Header = () => {
               <Input placeholder="Search..." className="pl-9 w-full" />
             </div>
             <nav className="flex flex-col space-y-3">
-              <a href="#bundles" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <button onClick={() => { navigate("/bundles"); setMobileMenuOpen(false); }} className="text-sm font-medium text-foreground hover:text-primary transition-colors text-left">
                 Data Bundles
-              </a>
-              <a href="#services" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              </button>
+              <button onClick={() => { navigate("/services"); setMobileMenuOpen(false); }} className="text-sm font-medium text-foreground hover:text-primary transition-colors text-left">
                 Services
-              </a>
-              <a href="#about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              </button>
+              <button onClick={() => { navigate("/about"); setMobileMenuOpen(false); }} className="text-sm font-medium text-foreground hover:text-primary transition-colors text-left">
                 About
-              </a>
-              <a href="#contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              </button>
+              <button onClick={() => { navigate("/contact"); setMobileMenuOpen(false); }} className="text-sm font-medium text-foreground hover:text-primary transition-colors text-left">
                 Contact
-              </a>
+              </button>
             </nav>
             <div className="flex items-center space-x-2 pt-2">
-              <Button variant="outline" className="flex-1">
+              <Button variant="outline" className="flex-1" onClick={() => { navigate("/auth"); setMobileMenuOpen(false); }}>
                 <User className="h-4 w-4 mr-2" />
                 Login
               </Button>
-              <Button className="flex-1">Get Started</Button>
+              <Button className="flex-1" onClick={() => { navigate("/auth"); setMobileMenuOpen(false); }}>Get Started</Button>
             </div>
           </div>
         )}

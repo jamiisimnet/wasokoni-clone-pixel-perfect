@@ -50,8 +50,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <p className="text-muted-foreground text-sm">+254 700 000 000</p>
-                      <p className="text-muted-foreground text-sm">+254 733 000 000</p>
+                      <p className="text-muted-foreground text-sm">+254 700 273 841</p>
+                      <p className="text-muted-foreground text-sm">+254 703 449 419</p>
                     </div>
                   </div>
                 </CardContent>
@@ -65,8 +65,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground text-sm">support@msmarketplace.co.ke</p>
-                      <p className="text-muted-foreground text-sm">info@msmarketplace.co.ke</p>
+                      <p className="text-muted-foreground text-sm">jamiisimnet@gmail.com</p>
+                      <p className="text-muted-foreground text-sm">info@jamiinet.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -80,8 +80,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Location</h3>
-                      <p className="text-muted-foreground text-sm">Nairobi, Kenya</p>
-                      <p className="text-muted-foreground text-sm">CBD, Kencom House</p>
+                      <p className="text-muted-foreground text-sm">Karatina, Kenya</p>
+                      <p className="text-muted-foreground text-sm">CBD, Rhino House</p>
                     </div>
                   </div>
                 </CardContent>
@@ -215,7 +215,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Can I get a refund?</h3>
-                    <p className="text-sm text-muted-foreground">Refunds are processed within 5-7 business days for eligible transactions.</p>
+                    <p className="text-sm text-muted-foreground">Refunds are processed within 1-2 business hours for eligible transactions.</p>
                   </div>
                 </div>
               </CardContent>

@@ -91,15 +91,15 @@ export const Footer = () => {
             <div className="space-y-3 mb-4">
               <div className="flex items-start space-x-2 text-sm">
                 <Mail className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-secondary-foreground/80">contact@marketplace.com</span>
+                <span className="text-secondary-foreground/80">jamiisimnet@gmail.com</span>
               </div>
               <div className="flex items-start space-x-2 text-sm">
                 <Phone className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-secondary-foreground/80">+254 700 000 000</span>
+                <span className="text-secondary-foreground/80">+254 700 273 841</span>
               </div>
               <div className="flex items-start space-x-2 text-sm">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-secondary-foreground/80">Nairobi, Kenya</span>
+                <span className="text-secondary-foreground/80">Karatina, Kenya</span>
               </div>
             </div>
             <div className="flex gap-2">
@@ -113,7 +113,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/20 pt-8 text-center text-sm text-secondary-foreground/60">
-          <p>&copy; 2024 MarketPlace. All rights reserved. Built with ❤️ for everyone.</p>
+          <p>&copy; 2024 JamiiMarket. All rights reserved. Built By JamiiServices.</p>
         </div>
       </div>
     </footer>

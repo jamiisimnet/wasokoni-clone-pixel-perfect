@@ -12,7 +12,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">About MS MarketPlace</Badge>
+            <Badge variant="secondary" className="mb-4">About JamiiMarket</Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Your Trusted Digital Services Partner
             </h1>

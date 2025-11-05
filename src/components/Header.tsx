@@ -59,7 +59,7 @@ export const Header = () => {
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
             </Button>
-            <Button onClick={() => navigate("/auth")}>Get Started</Button>
+            <Button onClick={() => navigate("/dashboard")}>Dashboard</Button>
           </div>
 
           {/* Mobile Menu Button */}

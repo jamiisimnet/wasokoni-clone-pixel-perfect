@@ -7,39 +7,45 @@ import { toast } from "@/hooks/use-toast";
 
 const bundles = [
   {
-    data: "1.25GB",
-    price: 50,
-    features: ["High Speed Data", "Affordable Package", "Valid Till Midnight"],
-    popular: false,
-  },
-  {
-    data: "2GB",
-    price: 100,
-    features: ["24 Hours Validity", "Fast Speeds", "Best Value"],
+    data: "1.2GB",
+    price: 55,
+    validity: "Till Midnight",
+    features: ["Valid Till Midnight", "High Speed", "Great Value"],
     popular: true,
   },
   {
-    data: "5GB",
-    price: 250,
-    features: ["7 Days Validity", "Premium Speed", "Most Popular"],
+    data: "1GB",
+    price: 19,
+    validity: "1 Hour",
+    features: ["1 Hour Validity", "Ultra Fast", "Quick Tasks"],
+    popular: false,
+  },
+  {
+    data: "6GB",
+    price: 700,
+    validity: "7 Days",
+    features: ["7 Days Validity", "High Volume", "Best for Streaming"],
     popular: false,
   },
   {
     data: "10GB",
-    price: 450,
-    features: ["30 Days Validity", "Unlimited Speed", "Best for Heavy Users"],
+    price: 950,
+    validity: "30 Days",
+    features: ["30 Days Validity", "Long Term", "Great Value"],
     popular: false,
   },
   {
-    data: "20GB",
-    price: 850,
-    features: ["30 Days Validity", "Ultra-Fast Speeds", "Perfect for Streaming"],
+    data: "35GB",
+    price: 1485,
+    validity: "28 Days",
+    features: ["28 Days Validity", "1.25GB Daily", "Premium Package"],
     popular: false,
   },
   {
-    data: "50GB",
-    price: 2000,
-    features: ["60 Days Validity", "Maximum Speed", "Best for Business"],
+    data: "1000 SMS",
+    price: 30,
+    validity: "1 Week",
+    features: ["1 Week Validity", "High Volume", "Best Value"],
     popular: false,
   },
 ];
@@ -52,12 +58,12 @@ export const PopularBundles = () => {
   };
 
   const handleShare = (bundle: typeof bundles[0]) => {
-    const message = `🔥 Check out this amazing data bundle!\n\n📦 ${bundle.data} for only KSh ${bundle.price}\n✅ ${bundle.features.join("\n✅ ")}\n\nGet yours now at MS MarketPlace!`;
+    const message = `🔥 Check out this amazing package!\n\n📦 ${bundle.data} for only KSh ${bundle.price}\n⏰ ${bundle.validity}\n✅ ${bundle.features.join("\n✅ ")}\n\nGet yours now at MS MarketPlace!`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
     toast({
       title: "Opening WhatsApp",
-      description: "Share this bundle with your friends!",
+      description: "Share this package with your friends!",
     });
   };
 
@@ -89,6 +95,7 @@ export const PopularBundles = () => {
                 <div className="flex items-baseline justify-center">
                   <span className="text-3xl font-bold text-primary">KSh {bundle.price}</span>
                 </div>
+                <p className="text-sm text-muted-foreground mt-2">{bundle.validity}</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">

@@ -8,10 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
-import { openWhatsAppChat } from "@/components/FloatingWhatsApp";
+import { useWhatsAppWidget } from "@/components/FloatingWhatsApp";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const whatsapp = useWhatsAppWidget();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -113,7 +114,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
                       <p className="text-muted-foreground text-sm mb-2">Chat with us instantly</p>
-                      <Button size="sm" variant="outline" onClick={() => openWhatsAppChat()}>Start Chat</Button>
+                      <Button size="sm" variant="outline" onClick={whatsapp.open}>Start Chat</Button>
                     </div>
                   </div>
                 </CardContent>
@@ -225,6 +226,7 @@ const Contact = () => {
         </div>
       </main>
       <Footer />
+      <whatsapp.WhatsAppWidget />
     </div>
   );
 };

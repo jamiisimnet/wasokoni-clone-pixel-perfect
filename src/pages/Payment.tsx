@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { CreditCard, Smartphone } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Payment = () => {
   const location = useLocation();
@@ -16,13 +17,22 @@ const Payment = () => {
   
   const [phoneNumber, setPhoneNumber] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"mpesa" | "card">("mpesa");
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUserId(session?.user?.id || null);
+    };
+    getUser();
+  }, []);
 
   if (!bundle) {
     navigate("/bundles");
     return null;
   }
 
-  const handlePayment = (e: React.FormEvent) => {
+  const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Processing Payment",
@@ -30,11 +40,49 @@ const Payment = () => {
     });
     
     // Simulate payment processing
-    setTimeout(() => {
+    setTimeout(async () => {
       toast({
         title: "Payment Successful!",
         description: `${bundle.data} bundle activated successfully.`,
       });
+
+      // Track conversion if user was referred
+      if (userId) {
+        const { data: referralData } = await supabase
+          .from('referrals')
+          .select('id, partner_id')
+          .eq('customer_id', userId)
+          .eq('status', 'lead')
+          .single();
+
+        if (referralData) {
+          // Update referral status to converted
+          await supabase
+            .from('referrals')
+            .update({ 
+              status: 'converted',
+              converted_at: new Date().toISOString()
+            })
+            .eq('id', referralData.id);
+
+          // Update partner pending amount
+          const { data: partnerData } = await supabase
+            .from('partners')
+            .select('pending_amount')
+            .eq('id', referralData.partner_id)
+            .single();
+
+          if (partnerData) {
+            await supabase
+              .from('partners')
+              .update({ 
+                pending_amount: Number(partnerData.pending_amount) + 1 
+              })
+              .eq('id', referralData.partner_id);
+          }
+        }
+      }
+
       navigate("/");
     }, 2000);
   };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const referralCode = searchParams.get("ref");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +48,7 @@ const Auth = () => {
     setLoading(true);
     const redirectUrl = `${window.location.origin}/dashboard`;
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -54,6 +56,7 @@ const Auth = () => {
         data: {
           full_name: fullName,
           phone_number: phoneNumber,
+          referral_code: referralCode
         },
       },
     });
@@ -67,6 +70,23 @@ const Auth = () => {
         variant: "destructive",
       });
     } else {
+      // Track referral if code exists
+      if (referralCode && data.user) {
+        const { data: partnerData } = await supabase
+          .from('partners')
+          .select('id')
+          .eq('referral_code', referralCode)
+          .single();
+
+        if (partnerData) {
+          await supabase.from('referrals').insert({
+            partner_id: partnerData.id,
+            customer_id: data.user.id,
+            status: 'lead'
+          });
+        }
+      }
+
       toast({
         title: "Success!",
         description: "Account created successfully. You can now sign in.",

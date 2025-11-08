@@ -36,23 +36,28 @@ export const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                <a href="/about" className="text-secondary-foreground/80 hover:text-primary transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                <a href="/services" className="text-secondary-foreground/80 hover:text-primary transition-colors">
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="#" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                <a href="/bundles" className="text-secondary-foreground/80 hover:text-primary transition-colors">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                <a href="/contact" className="text-secondary-foreground/80 hover:text-primary transition-colors">
                   Contact
+                </a>
+              </li>
+              <li>
+                <a href="/partner/auth" className="text-secondary-foreground/80 hover:text-primary transition-colors font-semibold">
+                  Become a Partner
                 </a>
               </li>
             </ul>

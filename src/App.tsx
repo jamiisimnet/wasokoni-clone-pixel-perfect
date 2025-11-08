@@ -16,6 +16,11 @@ import Dashboard from "./pages/Dashboard";
 import BuyForFriend from "./pages/BuyForFriend";
 import Transactions from "./pages/Transactions";
 import Profile from "./pages/Profile";
+import PartnerAuth from "./pages/PartnerAuth";
+import PartnerDashboard from "./pages/PartnerDashboard";
+import PartnerLeads from "./pages/PartnerLeads";
+import PartnerPayouts from "./pages/PartnerPayouts";
+import PartnerReports from "./pages/PartnerReports";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +42,11 @@ const App = () => (
           <Route path="/buy-for-friend" element={<BuyForFriend />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/partner/auth" element={<PartnerAuth />} />
+          <Route path="/partner/dashboard" element={<PartnerDashboard />} />
+          <Route path="/partner/leads" element={<PartnerLeads />} />
+          <Route path="/partner/payouts" element={<PartnerPayouts />} />
+          <Route path="/partner/reports" element={<PartnerReports />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingWhatsApp />

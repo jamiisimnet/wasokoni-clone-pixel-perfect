@@ -38,7 +38,7 @@ export const Hero = () => {
               <Button size="lg" className="text-base" onClick={() => navigate("/bundles")}>
                 Shop Bundles
               </Button>
-              <Button size="lg" variant="outline" className="text-base">
+              <Button size="lg" variant="outline" className="text-base" onClick={() => navigate("/partner/auth")}>
                 Become Partner
               </Button>
             </div>

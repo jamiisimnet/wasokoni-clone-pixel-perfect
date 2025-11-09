@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 interface WeeklyReport {
@@ -108,7 +110,13 @@ const PartnerReports = () => {
       <Header />
       <div className="min-h-screen bg-background py-12 px-4">
         <div className="container mx-auto max-w-4xl">
-          <h1 className="text-3xl font-bold mb-8">Weekly Reports</h1>
+          <div className="mb-8 flex items-center gap-4">
+            <Button variant="ghost" onClick={() => navigate("/partner/dashboard")}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back
+            </Button>
+            <h1 className="text-3xl font-bold">Weekly Reports</h1>
+          </div>
 
           {loading ? (
             <p>Loading reports...</p>

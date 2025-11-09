@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Package, ShoppingBag, Receipt, User as UserIcon } from "lucide-react";
+import { Package, ShoppingBag, Receipt, User as UserIcon, Handshake } from "lucide-react";
 import { User, Session } from "@supabase/supabase-js";
 import { toast } from "@/hooks/use-toast";
 
@@ -133,6 +133,22 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </div>
+
+          {/* Partner Dashboard Link */}
+          <Card className="mb-8 bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Handshake className="h-5 w-5" />
+                Partner Program
+              </CardTitle>
+              <CardDescription>Earn money by referring customers</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button onClick={() => navigate("/partner/dashboard")} className="w-full sm:w-auto">
+                Go to Partner Dashboard
+              </Button>
+            </CardContent>
+          </Card>
 
           {/* Active Packages */}
           <Card>

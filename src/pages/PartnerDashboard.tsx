@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { User } from "@supabase/supabase-js";
-import { DollarSign, Users, Clock, TrendingUp } from "lucide-react";
+import { DollarSign, Users, Clock, TrendingUp, Trophy } from "lucide-react";
 
 interface PartnerData {
   id: string;
@@ -218,6 +218,14 @@ const PartnerDashboard = () => {
                   onClick={() => navigate("/partner/reports")}
                 >
                   View Reports
+                </Button>
+                <Button 
+                  className="w-full" 
+                  variant="outline"
+                  onClick={() => navigate("/partner/leaderboard")}
+                >
+                  <Trophy className="h-4 w-4 mr-2" />
+                  Leaderboard
                 </Button>
               </CardContent>
             </Card>

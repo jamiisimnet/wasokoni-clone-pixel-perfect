@@ -21,6 +21,7 @@ import PartnerDashboard from "./pages/PartnerDashboard";
 import PartnerLeads from "./pages/PartnerLeads";
 import PartnerPayouts from "./pages/PartnerPayouts";
 import PartnerReports from "./pages/PartnerReports";
+import PartnerLeaderboard from "./pages/PartnerLeaderboard";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/partner/leads" element={<PartnerLeads />} />
           <Route path="/partner/payouts" element={<PartnerPayouts />} />
           <Route path="/partner/reports" element={<PartnerReports />} />
+          <Route path="/partner/leaderboard" element={<PartnerLeaderboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingWhatsApp />

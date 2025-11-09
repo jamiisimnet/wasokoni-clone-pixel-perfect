@@ -22,6 +22,9 @@ import PartnerLeads from "./pages/PartnerLeads";
 import PartnerPayouts from "./pages/PartnerPayouts";
 import PartnerReports from "./pages/PartnerReports";
 import PartnerLeaderboard from "./pages/PartnerLeaderboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminProcessPayouts from "./pages/AdminProcessPayouts";
+import AdminPartners from "./pages/AdminPartners";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +52,9 @@ const App = () => (
           <Route path="/partner/payouts" element={<PartnerPayouts />} />
           <Route path="/partner/reports" element={<PartnerReports />} />
           <Route path="/partner/leaderboard" element={<PartnerLeaderboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/process-payouts" element={<AdminProcessPayouts />} />
+          <Route path="/admin/partners" element={<AdminPartners />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingWhatsApp />
